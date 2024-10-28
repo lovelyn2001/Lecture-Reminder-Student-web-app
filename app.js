@@ -174,13 +174,13 @@ function sendNotification(email, courseTitle, venue, time) {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: "lovelynikwuka2001@gmail.com",
-            pass: "btjx jrdu bbqb zpto"
+            user: process.env.EMAIL,
+            pass: process.env.EMAIL_PASS
         }
     });
 
     const mailOptions = {
-        from: "lovelynikwuka2001@gmail.com",
+        from: process.env.EMAIL,
         to: email,
         subject: `New Lecture Scheduled: ${courseTitle}`,
         text: `A new lecture has been scheduled.\n\nCourse: ${courseTitle}\nVenue: ${venue}\nTime: ${time}`
