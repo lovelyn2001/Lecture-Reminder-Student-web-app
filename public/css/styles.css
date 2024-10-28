@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #ff4757;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+table th, table td {
+    padding: 15px;
+    border: 1px solid #fff;
+}
+
+form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form input, form button {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #2ed573;
+    color: white;
+}
+
+/* Media Query for Tablets (widths between 768px and 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    table {
+        font-size: 16px;
+    }
+
+    form {
+        width: 90%;
+    }
+}
+
+/* General container styling */
+.container {
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center;    /* Centers content vertically */
+    height: 100vh;          /* Full viewport height */
+    width: 100vw;           /* Full viewport width */
+    margin: 0 auto;         /* Centers the container on the page */
+    flex-direction: column; /* Aligns children in a column */
+    text-align: center;     /* Centers text inside the container */
+}
+
+/* Optional: to add padding and give the container a nicer look */
+.container-box {
+    padding: 20px;
+    background-color: #f4f4f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Optional max-width */
+    width: 100%;      /* Makes the box responsive */
+}
+
+
+/* Media Query for Mobile (widths less than 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    h1, h2 {
+        text-align: center;
+    }
+
+    .button {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+
+    table {
+        font-size: 12px;
+        word-wrap: break-word;
+    }
+
+    form {
+        width: 95%;
+    }
+}
+
+.alert {
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}

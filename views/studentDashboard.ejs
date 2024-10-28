@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <h1>Welcome, <%= student.name %></h1>
+
+    <section class="notifications">
+      <h2>Notifications</h2>
+      <p id="newLectureNotification">No new lectures at the moment.</p>
+    </section>
+
+    <section class="lecture-schedule">
+      <h2>Upcoming Lectures</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Course Title</th>
+            <th>Course Code</th>
+            <th>Instructor</th>
+            <th>Venue</th>
+            <th>Time</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="lectureTableBody">
+          <% lectures.forEach(function(lecture) { %>
+            <tr class="<%= lecture.expired ? 'expired' : '' %>">
+              <td><%= lecture.courseTitle %></td>
+              <td><%= lecture.courseCode %></td>
+              <td><%= lecture.instructorName %></td>
+              <td><%= lecture.venue %></td>
+              <td><%= lecture.time %></td>
+              <td><%= lecture.expired ? 'Expired' : 'Upcoming' %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <script src="js/notification.js"></script>
+  <script>
+    // Example lecture data (this should be dynamically fetched from the server)
+    const lectures =<%- JSON.stringify(lectures) %>;
+
+    // Function to update notifications
+    function checkForNewLectures() {
+      const newLectures = lectures.filter(lecture => !lecture.expired);
+      if (newLectures.length > 0) {
+        const latestLecture = newLectures[0];
+        const notificationText = `New Lecture: ${latestLecture.courseTitle} by ${latestLecture.instructorName} at ${latestLecture.venue} starting ${latestLecture.time}.`;
+        document.getElementById("newLectureNotification").textContent = notificationText;
+        pushLectureNotification(latestLecture); // Call the notification function
+      }
+    }
+
+    // Call the function to check for new lectures and notify students
+    checkForNewLectures();
+
+    // Periodically check for expired lectures and refresh the table
+    setInterval(function() {
+      location.reload();
+    }, 60000); // Refresh every 60 seconds to reflect updates like expired lectures
+
+    
+  </script>
+</body>
+</html>

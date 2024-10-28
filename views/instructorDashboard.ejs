@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+    <% if (success_msg) { %>
+        <div class="alert alert-success"><%= success_msg %></div>
+    <% } %>
+    <% if (error_msg) { %>
+        <div class="alert alert-danger"><%= error_msg %></div>
+    <% } %>
+    
+    <h1>Welcome, Instructor</h1>
+    <h2>Schedule a New Lecture</h2>
+    <form action="/instructor-dashboard" method="POST">
+        <input type="text" name="courseTitle" placeholder="Course Title" required>
+        <input type="text" name="venue" placeholder="Venue" required>
+        <input type="text" name="instructorName" placeholder="Instructor Name" required>
+        <input type="text" name="courseCode" placeholder="Course Code" required>
+        <input type="datetime-local" name="time" required>
+        <button type="submit">Schedule Lecture</button>
+    </form>
+</div>
+</body>
+</html>
